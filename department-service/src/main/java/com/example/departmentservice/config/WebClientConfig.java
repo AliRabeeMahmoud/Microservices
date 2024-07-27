@@ -3,6 +3,7 @@ package com.example.departmentservice.config;
 import com.example.departmentservice.client.EmployeeClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.client.loadbalancer.reactive.LoadBalancedExchangeFilterFunction;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,6 +41,7 @@ public class WebClientConfig {
 
     // in case of RestTemplate:
 //    @Bean
+//    @LoadBalanced
 //    public RestTemplate restTemplateBean() {
 //        return new RestTemplate();
 //    }
