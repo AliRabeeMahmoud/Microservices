@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -42,6 +43,7 @@ public class DepartmentController {
         return repository.findById(id);
     }
 
+
     @GetMapping("/with-employees")
     public List<Department> findAllWithEmployees() {
         LOGGER.info("Department find");
@@ -51,6 +53,13 @@ public class DepartmentController {
                 department.setEmployees(
                         employeeClient.findByDepartment(department.getId())));
         return  departments;
+
     }
+
+    // in case or RestTemplate:
+//    @Autowired
+//    private RestTemplate restTemplate;
+//    Employee employee = restTemplate.getForObject("http://localhost:8081/employee/address/{id}", Employee.class, id);
+//employeeResponse.setEmployee(employee);
 
 }
